@@ -4,273 +4,194 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="author" content="Tri Setyo Pamungkas, S.Farm." />
-  <title>Tri Setyo Pamungkas, S.Farm. - Embracing Challenges with a Chill Attitude, Unleashing Effective Solutions | LinkedIn</title>
-  <meta name="description" content="Portofolio modern, animation-heavy, responsif milik Tri Setyo Pamungkas, S. Farm." />
-
-  <!-- Google font -->
+  <title>Tri Setyo Pamungkas, S.Farm. — Portofolio Profesional</title>
+  <meta name="description" content="Portofolio modern, elegan, dan responsif milik Tri Setyo Pamungkas, S.Farm. berfokus pada farmasi klinis, bioinformatika, dan pengembangan web." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-  <!-- Phosphor Icons -->
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/duotone/style.css">
-
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tri Setyo Pamungkas, S.Farm. — Portofolio Profesional">
+  <meta property="og:description" content="Portofolio modern, elegan, dan responsif: farmasi klinis, bioinformatika, dan pengembangan web.">
+  <meta property="og:url" content="https://trisetyopamungkas.vercel.app/">
+  <meta property="og:image" content="https://trisetyopamungkas.vercel.app/public/profil.jfif">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tri Setyo Pamungkas, S.Farm. — Portofolio Profesional">
+  <meta name="twitter:description" content="Portofolio modern, elegan, dan responsif: farmasi klinis, bioinformatika, dan pengembangan web.">
+  <meta name="twitter:image" content="https://trisetyopamungkas.vercel.app/public/profil.jfif">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#071028">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
   <style>
     :root{
       --bg:#071028;
-      --card:#0f1724;
+      --surface:#0f1724;
+      --elev:#111a2b;
+      --text:#e6eef8;
+      --muted: rgba(230,238,248,0.65);
       --accent1:#7c5cff;
       --accent2:#00e0d8;
       --glass: rgba(255,255,255,0.06);
-      --muted: rgba(255,255,255,0.6);
       --glass-2: rgba(255,255,255,0.03);
+      --ring: rgba(124,92,255,0.25);
       --maxw: 1280px;
+      --radius: 14px;
+    }
+    :root[data-theme="light"]{
+      --bg:#ffffff;
+      --surface:#f8fafc;
+      --elev:#eef2f7;
+      --text:#0b1220;
+      --muted: rgba(11,18,32,0.68);
+      --accent1:#5b6cff;
+      --accent2:#0bb;
+      --glass: rgba(0,0,0,0.06);
+      --glass-2: rgba(0,0,0,0.035);
+      --ring: rgba(91,108,255,0.3);
+    }
+    @media (prefers-color-scheme: light){
+      :root:not([data-theme="dark"]){
+        --bg:#ffffff;
+        --surface:#f8fafc;
+        --elev:#eef2f7;
+        --text:#0b1220;
+        --muted: rgba(11,18,32,0.68);
+        --accent1:#5b6cff;
+        --accent2:#0bb;
+        --glass: rgba(0,0,0,0.06);
+        --glass-2: rgba(0,0,0,0.035);
+        --ring: rgba(91,108,255,0.3);
+      }
     }
     *{box-sizing:border-box}
-    html{font-size: 16px;}
+    html{font-size:clamp(15px, 0.9vw + 12px, 17px);}
     body{
       margin:0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.12), transparent),
-                  radial-gradient(900px 400px at 90% 90%, rgba(0,224,216,0.06), transparent),
-                  var(--bg);
-      color: #e6eef8;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, color-mix(in oklab, var(--accent1) 20%, transparent), transparent),
+        radial-gradient(900px 400px at 90% 90%, color-mix(in oklab, var(--accent2) 12%, transparent), transparent),
+        var(--bg);
+      color: var(--text);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       overflow-x:hidden;
-      line-height: 1.6;
+      line-height: 1.65;
     }
     body.menu-open { overflow: hidden; }
-
+    .skip-link{
+      position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;
+    }
+    .skip-link:focus{
+      left:1rem;top:1rem;width:auto;height:auto;padding:.5rem .75rem;border-radius:.5rem;background:var(--surface);color:var(--text);outline:2px solid var(--ring);z-index:999;
+    }
     #scroll-indicator {
       position: fixed;
       top: 0;
       left: 0;
       width: 0%;
-      height: 4px; /* Thickness of the scroll indicator */
+      height: 4px;
       background: linear-gradient(90deg, var(--accent1), var(--accent2));
       z-index: 100;
     }
-
-    /* container */
     .wrap{max-width:var(--maxw);margin:0 auto;padding:4rem 2rem}
-
-    /* NAV */
     header{position:fixed;left:0;right:0;top:1.125rem;z-index:80;display:flex;align-items:center;justify-content:center; padding: 0 2rem;}
-    .nav{width:100%;max-width:var(--maxw);display:flex;align-items:center;gap:1.125rem;justify-content:space-between;padding:0.625rem 1.125rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:0.875rem;backdrop-filter:blur(8px);box-shadow:0 0.5rem 1.875rem rgba(2,6,23,0.6)}
+    .nav{width:100%;max-width:var(--maxw);display:flex;align-items:center;gap:1.125rem;justify-content:space-between;padding:0.625rem 1.125rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:0.875rem;backdrop-filter:blur(8px);box-shadow:0 0.5rem 1.875rem rgba(2,6,23,0.06);border:1px solid color-mix(in oklab, var(--text) 8%, transparent)}
     .brand{display:flex;gap:0.75rem;align-items:center}
     .brand .name{font-weight: 800;}
     .brand .subtitle{font-size: 0.75rem; color: var(--muted); margin-top: 0.125rem;}
     .logo{width:2.75rem;height:2.75rem;border-radius:0.625rem;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#021225; font-size: 1rem;}
     .main-nav{display: flex; gap: 0.5rem;}
     .main-nav a{color:var(--muted);text-decoration:none;padding:0.5rem;border-radius:0.5rem;font-weight:600}
-    .main-nav a:hover{color:white;background:var(--glass)}
-    .main-nav a:focus{outline:2px solid rgba(124,92,255,0.25);outline-offset:0.1875rem}
+    .main-nav a:hover{color:var(--text);background:var(--glass)}
+    .main-nav a:focus{outline:2px solid var(--ring);outline-offset:0.1875rem}
     .hamburger-btn { display: none; }
-
-    /* HERO */
+    .theme-toggle{
+      background:transparent;border:1px solid color-mix(in oklab, var(--text) 10%, transparent);color:var(--text);
+      width:2.25rem;height:2.25rem;border-radius:999px;display:grid;place-items:center;cursor:pointer;
+    }
+    .theme-toggle:hover{background:var(--glass)}
+    .theme-toggle:focus{outline:2px solid var(--ring);outline-offset:2px}
     .hero{min-height:85vh;display:grid;grid-template-columns:1fr 460px;align-items:center;gap:2rem;padding-top:3rem}
-    .intro h1{font-size:3rem;line-height:1.02;margin:0 0 0.875rem;text-align:justify;}
-    .intro p{color:var(--muted);margin:0 0 1.375rem;max-width:50ch;text-align:justify;}
-    .cta{display:flex;gap:0.75rem}
-    .btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:0.75rem 1.125rem;border-radius:0.75rem;color:#021225;font-weight:700;border:none;cursor:pointer;box-shadow:0 0.5rem 1.875rem rgba(124,92,255,0.14); font-size: 1rem;}
-    .btn:focus{outline:0.1875rem solid rgba(0,224,216,0.18);outline-offset:0.1875rem}
-    .btn:hover { transform: translateY(-3px); box-shadow: 0 0.75rem 2rem rgba(124,92,255,0.2); }
-    .ghost{padding:0.625rem 0.875rem;border-radius:0.75rem;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted);font-weight:600;cursor:pointer; font-size: 1rem; transition: all 0.3s ease;}
-    .ghost:hover { background: rgba(255,255,255,0.08); color: white; }
-
-    /* right panel - 3D card */
+    .intro h1{font-size:3rem;line-height:1.02;margin:0 0 0.875rem;text-align:justify;letter-spacing:-0.02em}
+    .intro p{color:var(--muted);margin:0 0 1.375rem;max-width:60ch;text-align:justify;}
+    .cta{display:flex;gap:0.75rem;flex-wrap:wrap}
+    .btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:0.75rem 1.125rem;border-radius:0.75rem;color:#021225;font-weight:700;border:none;cursor:pointer;box-shadow:0 0.5rem 1.875rem color-mix(in oklab, var(--accent1) 14%, transparent); font-size: 1rem;}
+    .btn:focus{outline:0.1875rem solid color-mix(in oklab, var(--accent2) 18%, transparent);outline-offset:0.1875rem}
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 0.75rem 2rem color-mix(in oklab, var(--accent1) 20%, transparent); }
+    .ghost{padding:0.625rem 0.875rem;border-radius:0.75rem;border:1px solid color-mix(in oklab, var(--text) 10%, transparent);background:transparent;color:var(--muted);font-weight:600;cursor:pointer; font-size: 1rem; transition: all 0.3s ease;}
+    .ghost:hover { background: var(--glass); color: var(--text); }
     .card-wrap{perspective:1400px}
-    .profile-card{width:100%;height:32.5rem;border-radius:1.25rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:1.375rem;display:flex;flex-direction:column;gap:1.125rem;position:relative;overflow:hidden;backdrop-filter:blur(6px);box-shadow:0 1.875rem 5rem rgba(1,6,18,0.6)}
+    .profile-card{width:100%;height:32.5rem;border-radius:1.25rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:1.375rem;display:flex;flex-direction:column;gap:1.125rem;position:relative;overflow:hidden;backdrop-filter:blur(6px);box-shadow:0 1.875rem 5rem rgba(1,6,18,0.12);border:1px solid color-mix(in oklab, var(--text) 8%, transparent)}
     .profile-card .main-info{font-weight: 800;}
     .profile-card .sub-info{color: var(--muted); font-size: 0.8125rem;}
     .profile-card .availability{font-weight: 800; font-size: 1.25rem;}
     .profile-card .availability-sub{color: var(--muted); font-weight: 700;}
-    .profile-visual{flex:1;border-radius:0.875rem;background:linear-gradient(135deg, rgba(124,92,255,0.12), rgba(0,224,216,0.06));display:grid;place-items:center;position:relative;overflow:hidden}
-    .avatar{width:10rem;height:10rem;border-radius:1.125rem;box-shadow:0 1.125rem 2.5rem rgba(2,6,23,0.5);object-fit:cover;}
+    .profile-visual{flex:1;border-radius:0.875rem;background:linear-gradient(135deg, color-mix(in oklab, var(--accent1) 12%, transparent), color-mix(in oklab, var(--accent2) 8%, transparent));display:grid;place-items:center;position:relative;overflow:hidden}
+    .avatar{width:10rem;height:10rem;border-radius:1.125rem;box-shadow:0 1.125rem 2.5rem rgba(2,6,23,0.12);object-fit:cover;}
     .floating-shape{position:absolute;width:20rem;height:20rem;border-radius:50%;filter:blur(2.5rem);opacity:0.28}
     .shape1{background:linear-gradient(180deg,var(--accent1),transparent);left:-3.75rem;top:-3.75rem}
     .shape2{background:linear-gradient(180deg,var(--accent2),transparent);right:-7.5rem;bottom:-5rem}
-
-    /* Skills Section */
     .skills-section { padding: 5rem 0; }
     .skills-section .section-heading { text-align: center; margin-bottom: 3rem; font-size: 2rem; font-weight: 800;}
     .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;}
     .skill-category {
-      background-color: var(--card);
+      background-color: var(--surface);
       border-radius: 1rem;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
       transition: all 0.3s ease;
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
-      padding: 1.5rem; /* Add padding to the card */
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.08);
+      padding: 1.5rem;
     }
     .skill-category:hover {
       transform: translateY(-0.5rem);
-      box-shadow: 0 1rem 2rem rgba(0,0,0,0.3);
-      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 1rem 2rem rgba(0,0,0,0.12);
+      border-color: color-mix(in oklab, var(--text) 14%, transparent);
     }
     .skill-category h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--accent2); border-bottom: 2px solid var(--accent2); padding-bottom: 0.5rem;}
     .skills{display:flex;gap:1rem;flex-wrap:wrap}
     .chip{display: inline-flex; align-items: center; gap: 0.75rem; padding:0.75rem 1.25rem;border-radius:0.75rem;background:var(--glass-2);color:var(--muted);font-weight:600; font-size: 1rem; border: 1px solid transparent; transition: all 0.3s ease;}
-    .chip:hover { background-color: var(--glass); border-color: rgba(255,255,255,0.1); color: #fff; transform: translateY(-3px);}
+    .chip:hover { background-color: var(--glass); border-color: color-mix(in oklab, var(--text) 10%, transparent); color: var(--text); transform: translateY(-3px);}
     .chip svg, .chip i { width: 1.5rem; height: 1.5rem; color: var(--accent1);}
-
-    /* Projects grid + timeline */
     .projects{padding:5rem 0}
     .projects .section-heading{font-size: 1.75rem; margin: 0 0 1.125rem;}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.375rem}
     .proj {
-      background-color: var(--card);
+      background-color: var(--surface);
       border-radius: 1rem;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
       transition: all 0.3s ease;
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.08);
     }
     .proj:hover {
       transform: translateY(-0.5rem);
-      box-shadow: 0 1rem 2rem rgba(0,0,0,0.3);
-      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 1rem 2rem rgba(0,0,0,0.12);
+      border-color: color-mix(in oklab, var(--text) 14%, transparent);
     }
     .proj a { text-decoration: none; color: inherit; }
-    .proj .img-wrap {
-      overflow: hidden;
-      aspect-ratio: 16 / 9;
-    }
-    .proj img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    .proj:hover img {
-      transform: scale(1.05);
-    }
-    .proj .content {
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .proj h3 {
-      margin: 0;
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-    .proj p {
-      color: var(--muted);
-      margin: 0;
-      font-size: 0.9rem;
-      flex-grow: 1;
-    }
-    .proj .meta {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-    .proj .meta .tag {
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      background: var(--glass-2);
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 0.75rem;
-    }
-
-    /* timeline */
-    .timeline{margin-top:3rem;border-left:2px solid rgba(255,255,255,0.03);padding-left:1.75rem}
+    .proj .img-wrap { overflow: hidden; aspect-ratio: 16 / 9; }
+    .proj img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+    .proj:hover img { transform: scale(1.05); }
+    .proj .content { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .proj h3 { margin: 0; font-size: 1.25rem; font-weight: 700; }
+    .proj p { color: var(--muted); margin: 0; font-size: 0.9rem; flex-grow: 1; }
+    .proj .meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .proj .meta .tag { padding: 0.25rem 0.75rem; border-radius: 999px; background: var(--glass-2); color: var(--muted); font-weight: 600; font-size: 0.75rem; }
+    .timeline{margin-top:3rem;border-left:2px solid color-mix(in oklab, var(--text) 6%, transparent);padding-left:1.75rem}
     .event{margin:1.75rem 0;position:relative}
-    .event::before{content:"";position:absolute;left:-2.1875rem;top:0.25rem;width:1rem;height:1rem;border-radius:50%;background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 0.375rem 1.25rem rgba(0,0,0,0.4)}
-
-    /* Contact footer */
-    footer {
-      margin-top: 10rem;
-      padding: 5rem 2rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
-    .contact-area {
-      max-width: 600px;
-      width: 100%;
-      padding: 2.5rem;
-      border-radius: 1.5rem;
-      background: radial-gradient(circle at 50% 0%, rgba(124, 92, 255, 0.1), transparent 70%), var(--card);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 1rem 3rem rgba(0,0,0,0.3);
-      margin-bottom: 2rem;
-    }
-    .contact-area h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      margin: 0 0 0.75rem;
-      color: #fff;
-    }
-    .contact-area p {
-      color: var(--muted);
-      margin: 0 0 1.5rem;
-      max-width: 40ch;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .contact-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-    }
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.25rem;
-      border-radius: 0.75rem;
-      background-color: var(--glass-2);
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.2s ease;
-    }
-    .contact-btn:hover {
-      background-color: var(--accent1);
-      border-color: var(--accent1);
-    }
+    .event::before{content:"";position:absolute;left:-2.1875rem;top:0.25rem;width:1rem;height:1rem;border-radius:50%;background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 0.375rem 1.25rem rgba(0,0,0,0.12)}
+    footer { margin-top: 10rem; padding: 5rem 2rem 2rem; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
+    .contact-area { max-width: 600px; width: 100%; padding: 2.5rem; border-radius: 1.5rem; background: radial-gradient(circle at 50% 0%, color-mix(in oklab, var(--accent1) 10%, transparent) 0, transparent 70%), var(--surface); border: 1px solid color-mix(in oklab, var(--text) 8%, transparent); box-shadow: 0 1rem 3rem rgba(0,0,0,0.12); margin-bottom: 2rem; }
+    .contact-area h2 { font-size: 2rem; font-weight: 800; margin: 0 0 0.75rem; color: var(--text); }
+    .contact-area p { color: var(--muted); margin: 0 0 1.5rem; max-width: 40ch; margin-left: auto; margin-right: auto; }
+    .contact-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .contact-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; border-radius: 0.75rem; background-color: var(--glass-2); color: var(--text); font-weight: 600; text-decoration: none; border: 1px solid color-mix(in oklab, var(--text) 10%, transparent); transition: all 0.2s ease; }
+    .contact-btn:hover { background-color: var(--accent1); border-color: var(--accent1); color:#021225; }
     .contact-btn i { font-size: 1.25rem; }
     .copyright{color: var(--muted); font-size: 0.8125rem;}
-
-    #back-to-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: linear-gradient(90deg,var(--accent1),var(--accent2));
-      color: #021225;
-      border: none;
-      border-radius: 50%;
-      width: 3rem;
-      height: 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      cursor: pointer;
-      box-shadow: 0 0.5rem 1.5rem rgba(124,92,255,0.2);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 90;
-    }
-    #back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* responsive */
+    #back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: linear-gradient(90deg,var(--accent1),var(--accent2)); color: #021225; border: none; border-radius: 50%; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; box-shadow: 0 0.5rem 1.5rem color-mix(in oklab, var(--accent1) 20%, transparent); opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; z-index: 90; }
+    #back-to-top.show { opacity: 1; visibility: visible; }
     @media (max-width:980px){
       .hero{grid-template-columns:1fr;gap:1.375rem}
       .grid{grid-template-columns:repeat(2,1fr)}
@@ -280,7 +201,7 @@
       .main-nav { 
         position: fixed;
         inset: 0;
-        background-color: rgba(0,0,0,0.8);
+        background-color: rgba(0,0,0,0.6);
         backdrop-filter: blur(10px);
         flex-direction: column;
         align-items: center;
@@ -292,21 +213,9 @@
         transition: opacity 0.3s ease, transform 0.3s ease;
         transform: translateY(-100%);
       }
-      .main-nav.is-open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
+      .main-nav.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
       .main-nav a { font-size: 1.5rem; }
-      .hamburger-btn { 
-        display: block; 
-        z-index: 100;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
+      .hamburger-btn { display: block; z-index: 100; background: none; border: 1px solid color-mix(in oklab, var(--text) 10%, transparent); color: var(--text); width:2.5rem;height:2.5rem;border-radius:999px; display:grid;place-items:center; cursor: pointer; }
       .skills-grid { grid-template-columns: 1fr; }
     }
     @media (max-width:640px){
@@ -317,303 +226,283 @@
       footer{flex-direction:column;align-items:center}
       .contact-buttons{flex-direction:column;}
     }
-
-    /* little helper animation initial states */
     .reveal{opacity:0;transform:translateY(1.125rem)}
-
-    /* performance hints */
     .profile-card,
     .proj,
     .avatar,
     .shape1,
-    .shape2 {
-      will-change: transform, opacity;
-    }
+    .shape2 { will-change: transform, opacity; }
   </style>
 </head>
 <body>
   <div id="scroll-indicator"></div>
-
-      <header>
-        <div class="nav" role="navigation" aria-label="Main navigation">
-          <div class="brand">
-            <div class="logo" aria-label="Logo Tri Setyo Pamungkas">TS</div>
-            <div>
-              <div class="name">Tri Setyo Pamungkas, S.Farm.</div>
-              <div class="subtitle">Tenaga Teknis Kefarmasian di RSUD Leuwiliang</div>
-            </div>
-          </div>
-          <nav class="main-nav" id="main-nav" aria-label="Utama">
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#pengalaman">Pengalaman</a>
-            <a href="#pendidikan">Pendidikan</a>
-            <a href="#contact">Contact</a>
-          </nav>
-          <button class="hamburger-btn" aria-label="Toggle Menu">
-            <i class="ph-duotone ph-list"></i>
-          </button>
+  <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+  <header>
+    <div class="nav" role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <div class="logo" aria-label="Logo Tri Setyo Pamungkas">TS</div>
+        <div>
+          <div class="name">Tri Setyo Pamungkas, S.Farm.</div>
+          <div class="subtitle">Tenaga Teknis Kefarmasian di RSUD Leuwiliang</div>
         </div>
-      </header>
-
-      <main class="wrap" id="main-content" role="main">
-        <section class="hero" aria-labelledby="headline">
-          <div class="intro">
-            <h1 class="reveal" id="headline">Embracing Challenges with a Chill Attitude, Unleashing Effective Solutions</h1>
-            <p class="reveal">Tenaga Teknis Kefarmasian dengan keahlian di bidang farmasi klinis dan bioinformatika, dipadukan dengan kemampuan pengembangan web modern menggunakan React, Node.js, dan Express untuk menciptakan solusi digital yang inovatif.</p>
-            <div class="cta">
-              <button class="btn" id="btn-works" aria-label="Lihat karya">Lihat Karya</button>
-              <button class="ghost" id="btn-contact" aria-label="Hubungi saya">Hubungi Saya</button>
+      </div>
+      <nav class="main-nav" id="main-nav" aria-label="Utama">
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#pengalaman">Pengalaman</a>
+        <a href="#pendidikan">Pendidikan</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="theme-toggle" aria-label="Toggle tema" aria-pressed="false" title="Ganti tema">
+        <i class="ph-duotone ph-moon"></i>
+      </button>
+      <button class="hamburger-btn" aria-label="Toggle Menu" aria-controls="main-nav">
+        <i class="ph-duotone ph-list"></i>
+      </button>
+    </div>
+  </header>
+  <main class="wrap" id="main-content" role="main">
+    <section class="hero" aria-labelledby="headline">
+      <div class="intro">
+        <h1 class="reveal" id="headline">Embracing Challenges with a Chill Attitude, Unleashing Effective Solutions</h1>
+        <p class="reveal">Tenaga Teknis Kefarmasian dengan keahlian di bidang farmasi klinis dan bioinformatika, dipadukan dengan kemampuan pengembangan web modern menggunakan React, Node.js, dan Express untuk menciptakan solusi digital yang inovatif.</p>
+        <div class="cta">
+          <button class="btn" id="btn-works" aria-label="Lihat karya">Lihat Karya</button>
+          <button class="ghost" id="btn-contact" aria-label="Hubungi saya">Hubungi Saya</button>
+        </div>
+      </div>
+      <div class="card-wrap">
+        <div class="profile-card" id="card" role="group" aria-label="Kartu profil Tri Setyo Pamungkas">
+          <div class="profile-visual" aria-hidden="true">
+            <div class="floating-shape shape1" aria-hidden="true"></div>
+            <div class="floating-shape shape2" aria-hidden="true"></div>
+            <img src="./public/profil.jfif" alt="Foto profil Tri Setyo Pamungkas" class="avatar" aria-hidden="true">
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="main-info">Tri Setyo Pamungkas, S.Farm.</div>
+              <div class="sub-info">Tenaga Teknis Kefarmasian</div>
+            </div>
+            <div style="text-align:right">
+              <div class="availability">Available</div>
+              <div class="availability-sub">Freelance / Research</div>
             </div>
           </div>
-
-          <div class="card-wrap">
-            <div class="profile-card" id="card" role="group" aria-label="Kartu profil Tri Setyo Pamungkas">
-              <div class="profile-visual" aria-hidden="true">
-                <div class="floating-shape shape1" aria-hidden="true"></div>
-                <div class="floating-shape shape2" aria-hidden="true"></div>
-                <img src="./public/profil.jfif" alt="Foto profil Tri Setyo Pamungkas" class="avatar" aria-hidden="true">
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <div>
-                  <div class="main-info">Tri Setyo Pamungkas, S.Farm.</div>
-                  <div class="sub-info">Tenaga Teknis Kefarmasian</div>
-                </div>
-                <div style="text-align:right">
-                  <div class="availability">Available</div>
-                  <div class="availability-sub">Freelance / Research</div>
-                </div>
-              </div>
+        </div>
+      </div>
+    </section>
+    <section id="skills" class="skills-section reveal" aria-labelledby="skills-heading">
+      <h2 id="skills-heading" class="section-heading">Teknologi yang Dikuasai</h2>
+      <div class="skills-grid">
+        <div class="skill-category reveal">
+          <h3>Pengembangan Web</h3>
+          <div class="skills">
+            <div class="chip">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.5 -10.23174 23 20.46348" aria-hidden="true"><title>React Logo</title><circle cx="0" cy="0" r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
+              <span>React JS</span>
+            </div>
+            <div class="chip">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 590 361" aria-hidden="true"><path fill="#8CC84B" d="M295.2 361c-39.5 0-72.2-13.2-98-39.8-25.8-26.5-38.8-59.5-38.8-98.8 0-40.2 13-73.8 39-99.8 26-26 58.8-39 98.8-39s72.8 13 98.8 39c26 26 39 59.5 39 99.8 0 39.2-13 72.2-39 98.8-26 26.5-58.8 39.8-98.8 39.8zm0-252.2c-27.2 0-49.5 9.2-66.8 27.5-17.2 18.2-25.8 41.8-25.8 70.2 0 29.2 8.5 53.2 25.5 72 17 18.8 39.5 28.2 67 28.2 27.5 0 50-9.5 67.5-28.2 17.5-18.8 26.2-42.8 26.2-72 0-28.5-8.8-52-26.2-70.2-17.5-18.3-40-27.5-67.5-27.5z"/><path fill="#8CC84B" d="M513.5 22.2L414 4.5l-40.8 75.8c-14.2-11.5-30.8-17.2-50-17.2h-75.5v210.2h15V149.5h60.5c34.2 0 63.2 10.8 86.5 32.5 23.2 21.8 35 50 35 84.8 0 20-4 38-12 54l89.5 18.2L513.5 22.2z"/></svg>
+              <span>Node JS</span>
+            </div>
+            <div class="chip">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><path d="M32,60.9c-1.2,0-2.3-0.2-3.4-0.5c-1-0.3-1.9-0.8-2.7-1.5c-0.8-0.7-1.5-1.5-2-2.5c-0.5-1-0.8-2.1-0.8-3.2V11.8c0-1.2,0.3-2.3,0.8-3.4c0.5-1,1.2-1.9,2-2.7c0.8-0.8,1.8-1.5,2.7-2c1-0.5,2.1-0.8,3.4-0.8h19.4c1.2,0,2.3,0.3,3.4,0.8c1,0.5,1.9,1.2,2.7,2c0.8,0.8,1.5,1.8,2,2.7c0.5,1,0.8,2.1,0.8,3.4v11.8c0,1.2-0.3,2.3-0.8,3.4c-0.5,1-1.2,1.9-2,2.7c-0.8,0.8-1.8,1.5-2.7,2c-1,0.5-2.1,0.8-3.4,0.8H32c-1.2,0-2.3-0.3-3.4-0.8c-1-0.5-1.9-1.2-2.7-2c-0.8-0.8-1.5-1.8-2-2.7c-0.5-1-0.8-2.1-0.8-3.4V25c0-1.2,0.3-2.3,0.8-3.4c0.5-1,1.2-1.9,2-2.7c0.8-0.8,1.8-1.5,2.7-2c1-0.5,2.1-0.8,3.4-0.8h19.4v-3.4H32c-1.2,0-2.3,0.2-3.4,0.5c-1,0.3-1.9,0.8-2.7,1.5c-0.8,0.7-1.5,1.5-2,2.5c-0.5,1-0.8,2.1-0.8,3.2v37.4c0,1.2,0.3,2.3,0.8,3.4c0.5,1,1.2,1.9,2,2.7c0.8,0.8,1.8,1.5,2.7,2C29.7,60.7,30.8,60.9,32,60.9z" fill="#68a063"/></svg>
+              <span>Express JS</span>
+            </div>
+            <div class="chip">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#336791" d="M24,44c-11.046,0-20-8.954-20-20S12.954,4,24,4s20,8.954,20,20S35.046,44,24,44z"/><path fill="#fff" d="M24,7c-9.389,0-17,7.611-17,17s7.611,17,17,17s17-7.611,17-17S33.389,7,24,7z"/><path fill="#336791" d="M24,9c-8.284,0-15,6.716-15,15s6.716,15,15,15s15-6.716,15-15S32.284,9,24,9z"/><path fill="#fff" d="M24,11c-7.18,0-13,5.82-13,13s5.82,13,13,13s13-5.82,13-13S31.18,11,24,11z"/><path fill="#336791" d="M24,13c-6.075,0-11,4.925-11,11s4.925,11,11,11s11-4.925,11-11S30.075,13,24,13z"/><path fill="#fff" d="M26.5,28h-5c-1.105,0-2-0.895-2-2v-4c0-1.105,0.895-2,2-2h5c1.105,0,2,0.895,2,2v4C28.5,27.105,27.605,28,26.5,28z"/><path fill="#336791" d="M26.5,26h-5c-1.105,0-2-0.895-2-2v-4c0-1.105,0.895-2,2-2h5c1.105,0,2,0.895,2,2v4C28.5,25.105,27.605,26,26.5,26z"/><path fill="#fff" d="M21.5,24h5v-4h-5V24z"/></svg>
+              <span>PostgreSQL</span>
             </div>
           </div>
-        </section>
-
-        <section id="skills" class="skills-section reveal" aria-labelledby="skills-heading">
-          <h2 id="skills-heading" class="section-heading">Teknologi yang Dikuasai</h2>
-          <div class="skills-grid">
-            <div class="skill-category reveal">
-              <h3>Pengembangan Web</h3>
-              <div class="skills">
-                <div class="chip">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.5 -10.23174 23 20.46348"><title>React Logo</title><circle cx="0" cy="0" r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
-                  <span>React JS</span>
-                </div>
-                <div class="chip">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 590 361"><path fill="#8CC84B" d="M295.2 361c-39.5 0-72.2-13.2-98-39.8-25.8-26.5-38.8-59.5-38.8-98.8 0-40.2 13-73.8 39-99.8 26-26 58.8-39 98.8-39s72.8 13 98.8 39c26 26 39 59.5 39 99.8 0 39.2-13 72.2-39 98.8-26 26.5-58.8 39.8-98.8 39.8zm0-252.2c-27.2 0-49.5 9.2-66.8 27.5-17.2 18.2-25.8 41.8-25.8 70.2 0 29.2 8.5 53.2 25.5 72 17 18.8 39.5 28.2 67 28.2 27.5 0 50-9.5 67.5-28.2 17.5-18.8 26.2-42.8 26.2-72 0-28.5-8.8-52-26.2-70.2-17.5-18.3-40-27.5-67.5-27.5z"/><path fill="#8CC84B" d="M513.5 22.2L414 4.5l-40.8 75.8c-14.2-11.5-30.8-17.2-50-17.2h-75.5v210.2h15V149.5h60.5c34.2 0 63.2 10.8 86.5 32.5 23.2 21.8 35 50 35 84.8 0 20-4 38-12 54l89.5 18.2L513.5 22.2z"/></svg>
-                  <span>Node JS</span>
-                </div>
-                <div class="chip">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32,60.9c-1.2,0-2.3-0.2-3.4-0.5c-1-0.3-1.9-0.8-2.7-1.5c-0.8-0.7-1.5-1.5-2-2.5c-0.5-1-0.8-2.1-0.8-3.2V11.8c0-1.2,0.3-2.3,0.8-3.4c0.5-1,1.2-1.9,2-2.7c0.8-0.8,1.8-1.5,2.7-2c1-0.5,2.1-0.8,3.4-0.8h19.4c1.2,0,2.3,0.3,3.4,0.8c1,0.5,1.9,1.2,2.7,2c0.8,0.8,1.5,1.8,2,2.7c0.5,1,0.8,2.1,0.8,3.4v11.8c0,1.2-0.3,2.3-0.8,3.4c-0.5,1-1.2,1.9-2,2.7c-0.8,0.8-1.8,1.5-2.7,2c-1,0.5-2.1,0.8-3.4,0.8H32c-1.2,0-2.3-0.3-3.4-0.8c-1-0.5-1.9-1.2-2.7-2c-0.8-0.8-1.5-1.8-2-2.7c-0.5-1-0.8-2.1-0.8-3.4V25c0-1.2,0.3-2.3,0.8-3.4c0.5-1,1.2-1.9,2-2.7c0.8-0.8,1.8-1.5,2.7-2c1-0.5,2.1-0.8,3.4-0.8h19.4v-3.4H32c-1.2,0-2.3,0.2-3.4,0.5c-1,0.3-1.9,0.8-2.7,1.5c-0.8,0.7-1.5,1.5-2,2.5c-0.5,1-0.8,2.1-0.8,3.2v37.4c0,1.2,0.3,2.3,0.8,3.4c0.5,1,1.2,1.9,2,2.7c0.8,0.8,1.8,1.5,2.7,2C29.7,60.7,30.8,60.9,32,60.9z" fill="#68a063"/></svg>
-                  <span>Express JS</span>
-                </div>
-                <div class="chip">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#336791" d="M24,44c-11.046,0-20-8.954-20-20S12.954,4,24,4s20,8.954,20,20S35.046,44,24,44z"/><path fill="#fff" d="M24,7c-9.389,0-17,7.611-17,17s7.611,17,17,17s17-7.611,17-17S33.389,7,24,7z"/><path fill="#336791" d="M24,9c-8.284,0-15,6.716-15,15s6.716,15,15,15s15-6.716,15-15S32.284,9,24,9z"/><path fill="#fff" d="M24,11c-7.18,0-13,5.82-13,13s5.82,13,13,13s13-5.82,13-13S31.18,11,24,11z"/><path fill="#336791" d="M24,13c-6.075,0-11,4.925-11,11s4.925,11,11,11s11-4.925,11-11S30.075,13,24,13z"/><path fill="#fff" d="M26.5,28h-5c-1.105,0-2-0.895-2-2v-4c0-1.105,0.895-2,2-2h5c1.105,0,2,0.895,2,2v4C28.5,27.105,27.605,28,26.5,28z"/><path fill="#336791" d="M26.5,26h-5c-1.105,0-2-0.895-2-2v-4c0-1.105,0.895-2,2-2h5c1.105,0,2,0.895,2,2v4C28.5,25.105,27.605,26,26.5,26z"/><path fill="#fff" d="M21.5,24h5v-4h-5V24z"/></svg>
-                  <span>PostgreSQL</span>
-                </div>
-              </div>
+        </div>
+        <div class="skill-category reveal">
+          <h3>Komputasi Ilmiah</h3>
+          <div class="skills">
+            <div class="chip">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#336791" d="M24,44c-11.046,0-20-8.954-20-20S12.954,4,24,4s20,8.954,20,20S35.046,44,24,44z"/><path fill="#ffd43b" d="M24,7c-9.389,0-17,7.611-17,17s7.611,17,17,17s17-7.611,17-17S33.389,7,24,7z"/><path fill="#336791" d="M24,9c-8.284,0-15,6.716-15,15s6.716,15,15,15s15-6.716,15-15S32.284,9,24,9z"/><path fill="#fff" d="M24,11c-7.18,0-13,5.82-13,13s5.82,13,13,13s13-5.82,13-13S31.18,11,24,11z"/><path fill="#336791" d="M24,13c-6.075,0-11,4.925-11,11s4.925,11,11,11s11-4.925,11-11S30.075,13,24,13z"/><path fill="#fff" d="M26.5,28h-5c-1.105,0-2-0.895-2-2v-4c0-1.105,0.895-2,2-2h5c1.105,0,2,0.895,2,2v4C28.5,27.105,27.605,28,26.5,28z"/><path fill="#336791" d="M26.5,26h-5c-1.105,0-2-0.895-2-2v-4c0-1.105,0.895-2,2-2h5c1.105,0,2,0.895,2,2v4C28.5,25.105,27.605,26,26.5,26z"/><path fill="#fff" d="M21.5,24h5v-4h-5V24z"/></svg>
+              <span>Python (Machine Learning)</span>
             </div>
-            <div class="skill-category reveal">
-              <h3>Komputasi Ilmiah</h3>
-              <div class="skills">
-                <div class="chip">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#336791" d="M24,44c-11.046,0-20-8.954-20-20S12.954,4,24,4s20,8.954,20,20S35.046,44,24,44z"/><path fill="#ffd43b" d="M24,7c-9.389,0-17,7.611-17,17s7.611,17,17,17s17-7.611,17-17S33.389,7,24,7z"/><path fill="#336791" d="M24,9c-8.284,0-15,6.716-15,15s6.716,15,15,15s15-6.716,15-15S32.284,9,24,9z"/><path fill="#fff" d="M24,11c-7.18,0-13,5.82-13,13s5.82,13,13,13s13-5.82,13-13S31.18,11,24,11z"/><path fill="#336791" d="M24,13c-6.075,0-11,4.925-11,11s4.925,11,11,11s11-4.925,11-11S30.075,13,24,13z"/><path fill="#fff" d="M26.5,28h-5c-1.105,0-2-0.895-2-2v-4c0-1.105,0.895-2,2-2h5c1.105,0,2,0.895,2,2v4C28.5,27.105,27.605,28,26.5,28z"/><path fill="#336791" d="M26.5,26h-5c-1.105,0-2-0.895-2-2v-4c0-1.105,0.895-2,2-2h5c1.105,0,2,0.895,2,2v4C28.5,25.105,27.605,26,26.5,26z"/><path fill="#fff" d="M21.5,24h5v-4h-5V24z"/></svg>
-                  <span>Python (Machine Learning)</span>
-                </div>
-                <div class="chip">
-                  <i class="ph-duotone ph-atom"></i>
-                  <span>PLANTS (Docking)</span>
-                </div>
-                <div class="chip">
-                  <i class="ph-duotone ph-atom"></i>
-                  <span>Autodock4</span>
-                </div>
-                <div class="chip">
-                  <i class="ph-duotone ph-rocket"></i>
-                  <span>AutodockGPU</span>
-                </div>
-              </div>
+            <div class="chip">
+              <i class="ph-duotone ph-atom" aria-hidden="true"></i>
+              <span>PLANTS (Docking)</span>
+            </div>
+            <div class="chip">
+              <i class="ph-duotone ph-atom" aria-hidden="true"></i>
+              <span>Autodock4</span>
+            </div>
+            <div class="chip">
+              <i class="ph-duotone ph-rocket" aria-hidden="true"></i>
+              <span>AutodockGPU</span>
             </div>
           </div>
-        </section>
-
-        <section id="projects" class="projects" aria-labelledby="projects-heading">
-          <h2 id="projects-heading" class="section-heading">Selected Projects</h2>
-          <div class="grid">
-            <article class="proj reveal">
-              <a href="https://hadist-arbain.vercel.app/" target="_blank" rel="noopener noreferrer">
-                <div class="img-wrap">
-                  <img src="./public/FireShot Capture 002 - Hadis Arbain An-Nawawi - [hadist-arbain.vercel.app].png" alt="Tangkapan layar Hadist Arbain" loading="lazy">
-                </div>
-                <div class="content">
-                  <h3>Hadist Arbain</h3>
-                  <p>Aplikasi web interaktif berisi kumpulan 40 hadits penting dari Imam Nawawi.</p>
-                  <div class="meta">
-                    <span class="tag">Next.js</span>
-                    <span class="tag">Tailwind</span>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="proj reveal">
-              <a href="https://aptry.vercel.app/" target="_blank" rel="noopener noreferrer">
-                <div class="img-wrap">
-                  <img src="./public/FireShot Capture 003 - Login - Aptry - [aptry.vercel.app].png" alt="Tangkapan layar Aptry" loading="lazy">
-                </div>
-                <div class="content">
-                  <h3>Aptry</h3>
-                  <p>Platform try out online untuk persiapan masuk program profesi apoteker.</p>
-                  <div class="meta">
-                    <span class="tag">React</span>
-                    <span class="tag">Firebase</span>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="proj reveal">
-              <a href="https://prediksi-afinitas-cox2.vercel.app/" target="_blank" rel="noopener noreferrer">
-                <div class="img-wrap">
-                  <img src="./public/FireShot Capture 004 - prediksi-afinitas-cox2 - [prediksi-afinitas-cox2.vercel.app].png" alt="Tangkapan layar Prediksi Afinitas COX-2" loading="lazy">
-                </div>
-                <div class="content">
-                  <h3>Prediksi Afinitas COX-2</h3>
-                  <p>Alat prediksi afinitas senyawa terhadap enzim COX-2 untuk riset farmasi.</p>
-                  <div class="meta">
-                    <span class="tag">Python</span>
-                    <span class="tag">Machine Learning</span>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="proj reveal">
-              <a href="https://doi.org/10.36387/jiis.v8i1.1282" target="_blank" rel="noopener noreferrer">
-                <div class="img-wrap">
-                  <img src="./public/FireShot Capture 005 - View of STUDI IN SILICO SENYAWA AKTIF ASAM JAWA (Tamarindus indica _ - [e-jurnal.stikes-isfi.ac.id].png" alt="Tangkapan layar studi in silico" loading="lazy">
-                </div>
-                <div class="content">
-                  <h3>Studi In Silico Asam Jawa</h3>
-                  <p>Studi in silico senyawa aktif asam jawa (Tamarindus indica L.) sebagai antidiabetes melalui inhibisi protein tyrosine phosphatase.</p>
-                  <div class="meta">
-                    <span class="tag">In Silico</span>
-                    <span class="tag">Cheminformatics</span>
-                  </div>
-                </div>
-              </a>
-            </article>
-          </div>
-        </section>
-
-        <section id="pengalaman" class="projects" aria-labelledby="pengalaman-heading">
-          <h2 id="pengalaman-heading" class="section-heading">Pengalaman Kerja</h2>
-          <div class="timeline">
-            <div class="event reveal">
-              <h3>RSUD Leuwiliang</h3>
-              <p>Tenaga Teknis Kefarmasian</p>
-              <div class="meta"><span class="tag">Feb 2015 – Saat ini</span></div>
+        </div>
+      </div>
+    </section>
+    <section id="projects" class="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="section-heading">Selected Projects</h2>
+      <div class="grid">
+        <article class="proj reveal">
+          <a href="https://hadist-arbain.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <div class="img-wrap"><img src="./public/FireShot Capture 002 - Hadis Arbain An-Nawawi - [hadist-arbain.vercel.app].png" alt="Tangkapan layar Hadist Arbain" loading="lazy"></div>
+            <div class="content">
+              <h3>Hadist Arbain</h3>
+              <p>Aplikasi web interaktif berisi kumpulan 40 hadits penting dari Imam Nawawi.</p>
+              <div class="meta"><span class="tag">Next.js</span><span class="tag">Tailwind</span></div>
             </div>
-            <div class="event reveal">
-              <h3>Apotek CMB</h3>
-              <p>Asisten Tenaga Kefarmasian (Praktik Kerja Lapangan)</p>
-              <div class="meta"><span class="tag">Sep 2014 – Des 2014</span></div>
+          </a>
+        </article>
+        <article class="proj reveal">
+          <a href="https://aptry.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <div class="img-wrap"><img src="./public/FireShot Capture 003 - Login - Aptry - [aptry.vercel.app].png" alt="Tangkapan layar Aptry" loading="lazy"></div>
+            <div class="content">
+              <h3>Aptry</h3>
+              <p>Platform try out online untuk persiapan masuk program profesi apoteker.</p>
+              <div class="meta"><span class="tag">React</span><span class="tag">Firebase</span></div>
             </div>
-            <div class="event reveal">
-              <h3>SMK Farmasi Galenium</h3>
-              <p>Guru Musik</p>
-              <div class="meta"><span class="tag">Jun 2014 – Agu 2014</span></div>
+          </a>
+        </article>
+        <article class="proj reveal">
+          <a href="https://prediksi-afinitas-cox2.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <div class="img-wrap"><img src="./public/FireShot Capture 004 - prediksi-afinitas-cox2 - [prediksi-afinitas-cox2.vercel.app].png" alt="Tangkapan layar Prediksi Afinitas COX-2" loading="lazy"></div>
+            <div class="content">
+              <h3>Prediksi Afinitas COX-2</h3>
+              <p>Alat prediksi afinitas senyawa terhadap enzim COX-2 untuk riset farmasi.</p>
+              <div class="meta"><span class="tag">Python</span><span class="tag">Machine Learning</span></div>
             </div>
-             <div class="event reveal">
-              <h3>Puskesmas Cigudeg</h3>
-              <p>Asisten Tenaga Kefarmasian (Praktik Kerja Lapangan)</p>
-              <div class="meta"><span class="tag">Mei 2013 – Jun 2013</span></div>
+          </a>
+        </article>
+        <article class="proj reveal">
+          <a href="https://doi.org/10.36387/jiis.v8i1.1282" target="_blank" rel="noopener noreferrer">
+            <div class="img-wrap"><img src="./public/FireShot Capture 005 - View of STUDI IN SILICO SENYAWA AKTIF ASAM JAWA (Tamarindus indica _ - [e-jurnal.stikes-isfi.ac.id].png" alt="Tangkapan layar studi in silico" loading="lazy"></div>
+            <div class="content">
+              <h3>Studi In Silico Asam Jawa</h3>
+              <p>Studi in silico senyawa aktif asam jawa (Tamarindus indica L.) sebagai antidiabetes melalui inhibisi protein tyrosine phosphatase.</p>
+              <div class="meta"><span class="tag">In Silico</span><span class="tag">Cheminformatics</span></div>
             </div>
-          </div>
-        </section>
-
-        <section id="pendidikan" class="projects" aria-labelledby="pendidikan-heading">
-          <h2 id="pendidikan-heading" class="section-heading">Riwayat Pendidikan</h2>
-          <div class="timeline">
-            <div class="event reveal">
-              <h3>Institut Sains dan Teknologi Nasional (ISTN) Jakarta</h3>
-              <p>Sarjana Farmasi (S.Farm.)</p>
-              <div class="meta"><span class="tag">2019 – 2023</span></div>
-            </div>
-            <div class="event reveal">
-              <h3>SMK Farmasi Galenium</h3>
-              <p>Asisten Tenaga Kefarmasian</p>
-              <div class="meta"><span class="tag">2010 – 2013</span></div>
-            </div>
-          </div>
-        </section>
-
-        <footer id="contact" class="reveal" aria-labelledby="contact-heading">
-          <div class="contact-area">
-            <h2 id="contact-heading">Mari Terhubung</h2>
-            <p>Saya selalu terbuka untuk diskusi, kolaborasi, atau sekadar menyapa. Jangan ragu untuk menghubungi saya.</p>
-            <div class="contact-buttons">
-              <a href="mailto:trisastrohardjono@gmail.com" class="contact-btn">
-                <i class="ph-duotone ph-envelope-simple"></i>
-                Email Saya
-              </a>
-              <a href="https://t.me/trisetyop" class="contact-btn" target="_blank" rel="noopener noreferrer">
-                <i class="ph-duotone ph-telegram-logo"></i>
-                Telegram
-              </a>
-            </div>
-          </div>
-          <div class="copyright">© 2025 Tri Setyo Pamungkas, S. Farm </div>
-        </footer>
-      </main>
-
+          </a>
+        </article>
+      </div>
+    </section>
+    <section id="pengalaman" class="projects" aria-labelledby="pengalaman-heading">
+      <h2 id="pengalaman-heading" class="section-heading">Pengalaman Kerja</h2>
+      <div class="timeline">
+        <div class="event reveal">
+          <h3>RSUD Leuwiliang</h3>
+          <p>Tenaga Teknis Kefarmasian</p>
+          <div class="meta"><span class="tag">Feb 2015 – Saat ini</span></div>
+        </div>
+        <div class="event reveal">
+          <h3>Apotek CMB</h3>
+          <p>Asisten Tenaga Kefarmasian (Praktik Kerja Lapangan)</p>
+          <div class="meta"><span class="tag">Sep 2014 – Des 2014</span></div>
+        </div>
+        <div class="event reveal">
+          <h3>SMK Farmasi Galenium</h3>
+          <p>Guru Musik</p>
+          <div class="meta"><span class="tag">Jun 2014 – Agu 2014</span></div>
+        </div>
+        <div class="event reveal">
+          <h3>Puskesmas Cigudeg</h3>
+          <p>Asisten Tenaga Kefarmasian (Praktik Kerja Lapangan)</p>
+          <div class="meta"><span class="tag">Mei 2013 – Jun 2013</span></div>
+        </div>
+      </div>
+    </section>
+    <section id="pendidikan" class="projects" aria-labelledby="pendidikan-heading">
+      <h2 id="pendidikan-heading" class="section-heading">Riwayat Pendidikan</h2>
+      <div class="timeline">
+        <div class="event reveal">
+          <h3>Institut Sains dan Teknologi Nasional (ISTN) Jakarta</h3>
+          <p>Sarjana Farmasi (S.Farm.)</p>
+          <div class="meta"><span class="tag">2019 – 2023</span></div>
+        </div>
+        <div class="event reveal">
+          <h3>SMK Farmasi Galenium</h3>
+          <p>Asisten Tenaga Kefarmasian</p>
+          <div class="meta"><span class="tag">2010 – 2013</span></div>
+        </div>
+      </div>
+    </section>
+    <footer id="contact" class="reveal" aria-labelledby="contact-heading">
+      <div class="contact-area">
+        <h2 id="contact-heading">Mari Terhubung</h2>
+        <p>Saya selalu terbuka untuk diskusi, kolaborasi, atau sekadar menyapa. Jangan ragu untuk menghubungi saya.</p>
+        <div class="contact-buttons">
+          <a href="mailto:trisastrohardjono@gmail.com" class="contact-btn"><i class="ph-duotone ph-envelope-simple" aria-hidden="true"></i>Email Saya</a>
+          <a href="https://t.me/trisetyop" class="contact-btn" target="_blank" rel="noopener noreferrer"><i class="ph-duotone ph-telegram-logo" aria-hidden="true"></i>Telegram</a>
+        </div>
+      </div>
+      <div class="copyright">© 2025 Tri Setyo Pamungkas, S. Farm</div>
+    </footer>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
     // Register GSAP plugins
     gsap.registerPlugin(ScrollTrigger);
-
+    // Theme preference
+    (function(){
+      const btn = document.querySelector('.theme-toggle');
+      const storageKey = 'theme';
+      const root = document.documentElement;
+      const saved = localStorage.getItem(storageKey);
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      const initial = saved || (prefersLight ? 'light' : 'dark');
+      if (initial === 'light') {
+        root.setAttribute('data-theme','light');
+        if (btn){ btn.setAttribute('aria-pressed','true'); btn.innerHTML = '<i class="ph-duotone ph-sun"></i>'; }
+      }
+      btn?.addEventListener('click', () => {
+        const isLight = root.getAttribute('data-theme') === 'light';
+        const next = isLight ? 'dark' : 'light';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem(storageKey, next);
+        btn.setAttribute('aria-pressed', String(next === 'light'));
+        btn.innerHTML = next === 'light' ? '<i class="ph-duotone ph-sun"></i>' : '<i class="ph-duotone ph-moon"></i>';
+      });
+    })();
+    // Reduced motion flag
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // Hamburger Menu Toggle
     const hamburgerBtn = document.querySelector('.hamburger-btn');
-    const mainNav = document.querySelector('#main-nav'); // Use ID for mainNav
-    hamburgerBtn.setAttribute('aria-controls', 'main-nav'); // Set aria-controls
+    const mainNav = document.querySelector('#main-nav');
+    hamburgerBtn.setAttribute('aria-controls', 'main-nav');
     hamburgerBtn.addEventListener('click', () => {
       const isExpanded = mainNav.classList.toggle('is-open');
       document.body.classList.toggle('menu-open');
-      hamburgerBtn.setAttribute('aria-expanded', isExpanded); // Toggle aria-expanded
-      if (isExpanded) {
-        hamburgerBtn.innerHTML = '<i class="ph-duotone ph-x"></i>';
-      } else {
-        hamburgerBtn.innerHTML = '<i class="ph-duotone ph-list"></i>';
-      }
+      hamburgerBtn.setAttribute('aria-expanded', isExpanded);
+      hamburgerBtn.innerHTML = isExpanded ? '<i class="ph-duotone ph-x"></i>' : '<i class="ph-duotone ph-list"></i>';
     });
-
     // Close menu when a link is clicked
     mainNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         mainNav.classList.remove('is-open');
         document.body.classList.remove('menu-open');
-        hamburgerBtn.setAttribute('aria-expanded', 'false'); // Set aria-expanded to false
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
         hamburgerBtn.innerHTML = '<i class="ph-duotone ph-list"></i>';
       });
     });
-
-    // Entrance reveals with ScrollTrigger fallback
-    ScrollTrigger.batch(".reveal", {
-      interval: 0.1, // time window (in seconds) for batching to occur.
-      batchMax: 3,   // maximum number of elements in a batch (we'll load them in batches of 3)
-      onEnter: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: {each: 0.15, grid: [1, 3]}, overwrite: true}),
-      onLeave: batch => gsap.set(batch, {opacity: 0, y: -20, overwrite: true}),
-      onEnterBack: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: 0.15, overwrite: true}),
-      onLeaveBack: batch => gsap.set(batch, {opacity: 0, y: 20, overwrite: true})
-    });
-
-    
-
-    // Headline split animation (character by character) - preserve text content only
+    // Entrance reveals with ScrollTrigger
+    if (!prefersReducedMotion) {
+      ScrollTrigger.batch(".reveal", {
+        interval: 0.1,
+        batchMax: 3,
+        onEnter: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: {each: 0.15, grid: [1, 3]}, overwrite: true}),
+        onLeave: batch => gsap.set(batch, {opacity: 0, y: -20, overwrite: true}),
+        onEnterBack: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: 0.15, overwrite: true}),
+        onLeaveBack: batch => gsap.set(batch, {opacity: 0, y: 20, overwrite: true})
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
+    }
+    // Headline split animation
     (function() {
       const headline = document.getElementById('headline');
-      if (headline && headline.textContent.trim().length) {
+      if (!prefersReducedMotion && headline && headline.textContent.trim().length) {
         const text = headline.textContent;
-        // replace content safely with spans
         headline.innerHTML = text.split('').map(c => {
-          // preserve spaces
           if (c === ' ') return '<span style="display:inline-block;width:.45ch">&nbsp;</span>';
-          return `<span style="display:inline-block;">${c}</span>`;
+          return '<span style="display:inline-block;">' + c + '</span>';
         }).join('');
         gsap.fromTo(headline.querySelectorAll('span'),
           { y: 40, opacity: 0, rotationX: 20 },
@@ -621,11 +510,11 @@
         );
       }
     })();
-
     // Card 3D tilt interactive
     (function(){
       const card = document.getElementById('card');
       if (!card) return;
+      if (prefersReducedMotion) return;
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
@@ -636,42 +525,32 @@
         gsap.to(card, { rotationY: 0, rotationX: 0, scale: 1, duration: 0.9, ease: 'power3.out' });
       });
     })();
-
     // Floating shapes animate
-    gsap.to('.shape1', { y: -40, x: 20, duration: 6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-    gsap.to('.shape2', { y: 30, x: -10, duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-
-    // Project cards hover pop (only on pointer-capable devices)
-    if (window.matchMedia('(hover: hover)').matches) {
+    if (!prefersReducedMotion) {
+      gsap.to('.shape1', { y: -40, x: 20, duration: 6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+      gsap.to('.shape2', { y: 30, x: -10, duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    }
+    // Project cards hover pop
+    if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
       gsap.utils.toArray('.proj').forEach(p => {
-        p.addEventListener('mouseenter', () => gsap.to(p, { y: -8, boxShadow: '0 28px 80px rgba(2,6,23,0.5)', duration: 0.45, ease: 'power2.out' }));
+        p.addEventListener('mouseenter', () => gsap.to(p, { y: -8, boxShadow: '0 28px 80px rgba(2,6,23,0.2)', duration: 0.45, ease: 'power2.out' }));
         p.addEventListener('mouseleave', () => gsap.to(p, { y: 0, boxShadow: '0 0 0 rgba(0,0,0,0)', duration: 0.6, ease: 'power2.out' }));
       });
     }
-
-    // Buttons -> scroll to sections (works with SmoothScroller or native)
+    // Buttons -> scroll to sections
     document.getElementById('btn-works')?.addEventListener('click', () => {
       document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
     });
     document.getElementById('btn-contact')?.addEventListener('click', () => {
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
     });
-
-    // Back to Top button functionality
+    // Back to Top
     const backToTopButton = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
-      // Show button after scrolling 300px
-      if (window.scrollY > 300) {
-        backToTopButton.classList.add('show');
-      } else {
-        backToTopButton.classList.remove('show');
-      }
+      if (window.scrollY > 300) { backToTopButton.classList.add('show'); } else { backToTopButton.classList.remove('show'); }
     });
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Scroll indicator functionality
+    backToTopButton.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    // Scroll indicator
     const scrollIndicator = document.getElementById('scroll-indicator');
     window.addEventListener('scroll', () => {
       const scrollPx = document.documentElement.scrollTop || document.body.scrollTop;
@@ -680,8 +559,6 @@
       scrollIndicator.style.width = scrolled + '%';
     });
   </script>
-  <button id="back-to-top" aria-label="Kembali ke atas">
-      <i class="ph-duotone ph-arrow-up"></i>
-    </button>
+  <button id="back-to-top" aria-label="Kembali ke atas"><i class="ph-duotone ph-arrow-up"></i></button>
 </body>
 </html>
